@@ -1,0 +1,29 @@
+<app-add-grocery></app-add-grocery>
+<!-- <h2>Add Grocery - Template driven form</h2>
+
+<form (ngSubmit)="onSubmit(myForm)" #myForm="ngForm">
+  Name: <input type="text" name="name" ngModel #name="ngModel" required />
+  <br />
+  <div *ngIf="name.invalid && name.touched">Name is required</div>
+  Quantity: <input type="text" name="quantity" ngModel #quantity="ngModel" />
+  <br />
+  <input type="submit" value="Add Grocery" />
+</form> -->
+<app-header [total]="getTotal()"></app-header>
+
+<!-- <div>Search : <input type="text" (change)="searchGrocery($event)" /></div> -->
+<div>
+  Search : <input type="text" [(ngModel)]="searchValue" /> {{ searchValue }}
+</div>
+<div *ngFor="let g of grocery">
+  <div *ngIf="searchValue === '' || g.name.toLowerCase().includes(searchValue)">
+    <p>id - {{ g.id }}</p>
+    <p>name - {{ g.name }}</p>
+    <p [ngStyle]="{ backgroundColor: g.quantity > 10 ? 'green' : 'red' }">
+      <button (click)="changeQuantity(g.id, -1)">-</button> {{ g.quantity }}
+      <button (click)="changeQuantity(g.id, 1)">+</button>
+    </p>
+    <button (click)="deleteGrocery(g.id)">X</button>
+    <hr />
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<h2>Add Grocery - Reactive form</h2>
+
+<form [formGroup]="groceryForm" (ngSubmit)="onSubmit2()">
+  Name: <input type="text" formControlName="name" />
+  <br />
+  <div *ngIf="groceryForm.get('name')?.invalid">Name is required</div>
+  Quantity: <input type="text" formControlName="quantity" />
+  <br />
+  <input type="submit" value="Add Grocery" />
+</form>

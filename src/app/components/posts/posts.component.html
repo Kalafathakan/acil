@@ -1,0 +1,8 @@
+<h2>List of posts</h2>
+<button (click)="addPost()">Add Post</button>
+<div *ngFor="let p of posts">
+  <h3>{{ p.title }}</h3>
+  <p>{{ p.id }}</p>
+  <p>{{ p.userId }}</p>
+  <p>{{ p.body }}</p>
+</div>
